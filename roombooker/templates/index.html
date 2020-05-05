@@ -1,26 +1,25 @@
+{% extends 'templates/header.html' %}
 {% load fullcalendar_tags %}
+{% load widget_tweaks %}
 
-<!DOCTYPE html>
-<html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block head_title %}Home - {{ block.super }}{% endblock head_title %}
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        {% fullcalendar_css %}        
-        {% fullcalendar_print_css %}        
-        {% fullcalendar_jquery %}
-        {% fullcalendar_jquery_ui %}
-        {% fullcalendar_javascript %}
-        
-        {% calendar_init calendar_config_options %}
+{% block head %}
+    {{ block.super }}
+    {% load static %}
 
-    </head>
-    <body>
+    {% fullcalendar_css %}        
+    {% fullcalendar_print_css %}        
+    {% fullcalendar_jquery %}
+    {% fullcalendar_jquery_ui %}
+    {% fullcalendar_javascript %}
+    
+    {% calendar_init calendar_config_options %}
+
+    <link rel = "stylesheet" href = "{% static 'css/login.style.css' %}" type = "text/css"/>
+{% endblock head %}
+
+{% block content %}
     {% load fullcalendar_tags %}
-	{% calendar %}
-    </body>
-</html>
+    {% calendar %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'templates/header.html' %}
+{% load widget_tweaks %}
+
+{% block head_title %} Add Event - {{ block.super }}{% endblock head_title %}
+
+{% block head %}
+	{{ block.super }}
+	{% load static %}
+
+{% endblock head %}
+
+{% block content %}
+	<div id='Login-Page'>
+		<h4 class="col-sm-2 offset-sm-5">Book a Room</h4>
+
+		<form method="post">
+			{% csrf_token %}
+
+			{% if form.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger col-lg-4 offset-lg-4" role="alert">
+                        Something Went Wrong!
+					</div>
+				</div>
+			{% endif %}
+            {% if messages %}
+                    <div class="form-group">
+                        <div class="alert alert-danger col-lg-4 offset-lg-4" role="alert">
+                            This time is already booked!
+                        </div>
+					</div>
+            {% endif %}
+
+			{% if next %}
+				{% if user.is_authenticated %}
+				<div class="form-group">
+					<div class="alert alert-warning col-lg-4 offset-lg-4" role="alert">
+						You have to login or register to be able to access this page.
+					</div>
+				</div>
+				{% endif %}
+			{% endif %}
+
+			{% for field in form.visible_fields %}
+				
+				{% if field.errors %}
+					{% for error in field.errors %}
+						<p>{{ error }}</p>
+					{% endfor %}
+				{% endif %}
+				
+				<div class="form-group">
+					<div class="col-lg-4 offset-lg-4">
+						{% render_field field class="form-control" required="true" placeholder=field.label.capitalize %}
+					</div>
+				</div>
+			{% endfor %}
+
+			<div class="form-group">
+				<div class="col-lg-2 offset-lg-5">
+					<input class="btn btn-primary" type="submit" value="Book" />
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
