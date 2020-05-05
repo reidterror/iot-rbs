@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import subprocess
-import MQTTClient
+from MQTTClient import MQTTClient
 
 Pin = 11
 mqttClient = MQTTClient('movement', 'movementsensor', 'movement')
@@ -11,8 +11,7 @@ def read_movement():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(Pin, GPIO.IN)        
     while True:
-        i=GPIO.input(Pin
-    )
+        i=GPIO.input(Pin)
         if i==0:                 
             print("Not Sensing Motion",i)
             time.sleep(0.1)
@@ -25,4 +24,4 @@ def read_movement():
 while True:
     sensor_data = read_movement()
     mqttClient.send("rbs/movement-sensor", str(sensor_data))
-    time.sleep(2)
+    time.sleep(60) # 1 Minute

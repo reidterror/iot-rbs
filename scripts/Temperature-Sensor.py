@@ -1,7 +1,7 @@
 import RPi.GPIO as io 
 import time
 import subprocess
-import MQTTClient
+from MQTTClient import MQTTClient
 from sense_hat import SenseHat
 
 sense = SenseHat()
