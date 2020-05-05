@@ -3,6 +3,7 @@ Django==3.0.6
 django-admin==2.0.1
 django-excel-base==1.0.4
 django-excel-response2==3.0.2
+django-fullcalendar @ git+https://github.com/rodrigoamaral/django-fullcalendar.git@d116fcfc2093e57035932a9ea7c111d449fd7e4d
 django-six==1.0.4
 django-widget-tweaks==1.4.8
 paho-mqtt==1.5.0
