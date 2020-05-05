@@ -16,6 +16,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+FULLCALENDAR_FOLDER = os.path.abspath(os.path.join(BASE_DIR, '..', '..', 'django-fullcalendar'))
+if FULLCALENDAR_FOLDER not in sys.path:    
+    sys.path.insert(0, FULLCALENDAR_FOLDER)
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'booking',
     'users',
     'widget_tweaks',
+    'fullcalendar',
 ]
 
 MIDDLEWARE = [
@@ -117,11 +123,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+	os.path.join(BASE_DIR, 'static/'),
+)
 
 # For debugging
 # python -m smtpd -n -c DebuggingServer localhost:1025
