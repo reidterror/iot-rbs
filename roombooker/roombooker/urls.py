@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('booking.urls'), name="home"),
+    #path('', include('booking.urls'), name="home"),
     path('admin/', admin.site.urls),
     path('profile/', include(('users.urls', 'user'), namespace="user")),
     path('', TemplateView.as_view(template_name='index.html'), name="home")                                                                       
