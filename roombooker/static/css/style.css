@@ -1,0 +1,50 @@
+.navbar-style{
+    background-color: #0062cc;
+}
+.form-style{
+    margin-bottom: 2rem !important;
+    margin-left: 25rem !important;
+    font-weight: 800 !important;
+}
+.field-style{
+  width:60% !important;
+}
+.footer-style{
+  font-size: 24px;
+  margin-left: 52rem;
+  margin-top: 28rem;
+}
+.login-style{
+    font-weight: 800;
+    font-size: 50px;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.login-button-style{
+    margin-left:32.5rem;
+}
+.lp-style{
+    margin-left:28.5rem;
+    font-size:24px;
+    font-weight: 400;
+}
+.navlink-style{
+    font-size:24px;
+    font-weight: 400;
+}
+.field-style-2{
+    width: 30% !important;
+    margin-left: 24.5rem;
+}
+.profile-style{
+   text-align:center;
+}
+.profile-style-1{
+   margin-top: 5rem;
+   text-align:center;
+}
+.bold{
+   font-weight: 800;
+   text-size: 48px;
+}

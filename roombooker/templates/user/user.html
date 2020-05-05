@@ -1,7 +1,9 @@
 {% extends 'templates/header.html' %}
 
-{% block head_title %}Профил - {{ block.super }}{% endblock head_title %}
+{% block head_title %}Profile - {{ block.super }}{% endblock head_title %}
 
 {% block content %}
-	<h4>{{ object.username }} <small><small>RFID: {{ object.profile.rfid }}</small></small></h4>
+        <h4 class="col-sm-2 offset-sm-5 login-style">Profile</h4>
+	<h4 class="profile-style-1">USERNAME: <div class="bold">{{ object.username }}</div></h4>
+        <h4 class="profile-style">RFID: <div class="bold">{{ object.profile.rfid }}</div></h4>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-style">
 	<a class="navbar-brand" href="{% url 'home' %}">
 		<img src="{% static 'img/Marsiela-Logo.png' %}" width="25" height="33" alt=""/>
 	</a>
@@ -14,14 +14,14 @@
 				{% if request.path == "/" %}
 					<a id="active" class="nav-link" href="{% url 'home' %}">Home</a>
 				{% else %}
-					<a class="nav-link" href="{% url 'home' %}">Home</a>
+					<a class="nav-link navlink-style" href="{% url 'home' %}">Home</a>
 				{% endif %}
 			</li>
 		</ul>
 
 		{% if not request.user.is_authenticated %}
 			<form action="{% url 'user:login' %}">
-				<input class='Button' type="submit" value="Вход" />
+				<input class='Button btn btn-primary' type="submit" value="Login" />
 			</form>
 		{% else %}
 			<i id='Welcome'>Hello, <a id='User-Name' href='{% url 'user:detail' %}'>{{ request.user.first_name }}  {{ request.user.last_name }}</a>!</i>
