@@ -6,15 +6,16 @@ dirname = os.path.dirname(__file__)
 host          = "node02.myqtthub.com"
 port          = 1883
 clean_session = True
-client_id     = "lyubentemp@tutanota.com"
-user_name     = "fractalow"  
-password      = "Pedal123!"
+client_id     = "server"
+user_name     = "web-server"  
+password      = "server"
  
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
  
-    client.subscribe("roombooker/test")
-    client.subscribe("roombooker/topic")
+    client.subscribe("rbs/temp-sensor")
+    client.subscribe("rbs/rfid-sensor")
+    client.subscribe("rbs/movement-sensor")
  
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
