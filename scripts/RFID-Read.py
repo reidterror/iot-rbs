@@ -8,6 +8,7 @@ import time
 from mfrc522 import SimpleMFRC522
 
 mqttClient = MQTTClient('rfid', 'rfidsensor', 'rfid')
+room = 400
 
 reader = SimpleMFRC522()
 
@@ -24,5 +25,5 @@ def read_rfid():
 
 while True:
     sensor_data = read_rfid()
-    mqttClient.send("rbs/rfid-sensor", str(sensor_data))
+    mqttClient.send("rbs/rfid-sensor", str(sensor_data)+','+str(room))
     time.sleep(1)
