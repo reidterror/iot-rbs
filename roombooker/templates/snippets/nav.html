@@ -12,9 +12,9 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
 				{% if request.path == "/" %}
-					<a id="active" class="nav-link" href="{% url 'home' %}">Начало</a>
+					<a id="active" class="nav-link" href="{% url 'home' %}">Home</a>
 				{% else %}
-					<a class="nav-link" href="{% url 'home' %}">Начало</a>
+					<a class="nav-link" href="{% url 'home' %}">Home</a>
 				{% endif %}
 			</li>
 		</ul>
@@ -24,10 +24,10 @@
 				<input class='Button' type="submit" value="Вход" />
 			</form>
 		{% else %}
-			<i id='Welcome'>Здравейте, <a id='User-Name' href='{% url 'user:detail' %}'>{{ request.user.first_name }}  {{ request.user.last_name }}</a>!</i>
+			<i id='Welcome'>Hello, <a id='User-Name' href='{% url 'user:detail' %}'>{{ request.user.first_name }}  {{ request.user.last_name }}</a>!</i>
 
 			<form action="{% url 'user:logout' %}">
-				<input class='btn btn-primary' type="submit" value="Изход" />
+				<input class='btn btn-primary' type="submit" value="Logout" />
 			</form>
 		{% endif %}
 	</div>
