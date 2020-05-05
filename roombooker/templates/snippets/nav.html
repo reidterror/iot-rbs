@@ -1,0 +1,34 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark">
+	<a class="navbar-brand" href="{% url 'home' %}">
+		<img src="{% static 'img/Marsiela-Logo.png' %}" width="25" height="33" alt=""/>
+	</a>
+
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="mainNavbar">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				{% if request.path == "/" %}
+					<a id="active" class="nav-link" href="{% url 'home' %}">Начало</a>
+				{% else %}
+					<a class="nav-link" href="{% url 'home' %}">Начало</a>
+				{% endif %}
+			</li>
+		</ul>
+
+		{% if not request.user.is_authenticated %}
+			<form action="{% url 'user:login' %}">
+				<input class='Button' type="submit" value="Вход" />
+			</form>
+		{% else %}
+			<i id='Welcome'>Здравейте, <a id='User-Name' href='{% url 'user:detail' %}'>{{ request.user.first_name }}  {{ request.user.last_name }}</a>!</i>
+
+			<form action="{% url 'user:logout' %}">
+				<input class='btn btn-primary' type="submit" value="Изход" />
+			</form>
+		{% endif %}
+	</div>
+</nav>

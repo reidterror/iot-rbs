@@ -1,0 +1,28 @@
+{% extends 'templates/header.html' %}
+
+{% block head_title %}Изход - {{ block.super }}{% endblock head_title %}
+
+{% block head %}
+	{{ block.super }}
+	{% load static %}
+	<link rel = "stylesheet" href = "{% static 'css/login.style.css' %}" type = "text/css"/>
+{% endblock head %}
+
+{% block content %}
+	<script>
+		function redirect()
+		{
+			window.location.href = "{% url 'home' %}";
+		}
+
+		setTimeout(redirect, 2000); //2000 is equivalent to 2 seconds
+	</script>
+	
+	<div id='Login-Page'>
+		<h4 class="col-sm-4 offset-sm-4">Изход</h4>
+		<div class="alert alert-success col-sm-4 offset-sm-4" role="alert">
+			Успешен изход, <b>връщаме ви към началната страница</b>.
+		</div>
+	</div>
+
+{% endblock %}

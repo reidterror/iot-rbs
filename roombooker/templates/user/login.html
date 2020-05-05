@@ -1,0 +1,67 @@
+{% extends 'templates/header.html' %}
+{% load widget_tweaks %}
+
+{% block head_title %}Вход - {{ block.super }}{% endblock head_title %}
+
+{% block head %}
+	{{ block.super }}
+	{% load static %}
+	<link rel = "stylesheet" href = "{% static 'css/login.style.css' %}" type = "text/css"/>
+{% endblock head %}
+
+{% block content %}
+	<div id='Login-Page'>
+		<h4 class="col-sm-2 offset-sm-5">Вход</h4>
+
+		<form method="post">
+			{% csrf_token %}
+
+			{% if form.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger col-lg-4 offset-lg-4" role="alert">
+						Грешно потребителско име или парола.
+					</div>
+				</div>
+			{% endif %}
+
+			{% if next %}
+				{% if user.is_authenticated %}
+				<div class="form-group">
+					<div class="alert alert-warning col-lg-4 offset-lg-4" role="alert">
+						Трябва да влезете в профила си или да се регистрирате, за да имате достъп до тази страница.
+					</div>
+				</div>
+				{% endif %}
+			{% endif %}
+
+			{% for field in form.visible_fields %}
+				
+				{% if field.errors %}
+					{% for error in field.errors %}
+						<p>{{ error }}</p>
+					{% endfor %}
+				{% endif %}
+				
+				<div class="form-group">
+					<div class="col-lg-4 offset-lg-4">
+						{% render_field field class="form-control" required="true" placeholder=field.label.capitalize %}
+					</div>
+				</div>
+			{% endfor %}
+
+			<div class="form-group">
+				<div class="col-lg-2 offset-lg-5">
+					<input class="btn btn-primary" type="submit" value="Вход" />
+					<input type="hidden" name="next" value="{% url 'user:detail' %}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-lg-4 offset-lg-4">
+					{# Assumes you setup the password_reset view in your URLconf #}
+					<p><a href="{% url 'user:password_reset' %}"><small><i>Възстановяване на забравена парола.</i></small></a></p>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
